@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Questions.dart';
+import 'Quiz_brain.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,12 +14,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
+  Quiz_brain quiz = Quiz_brain();
   List<Icon> myList = [];
-  List<Questions> myQ = [
-    Questions(q: 'Blood of human is green', r: true),
-    Questions(q: 'There are just 2 kinds of people', r: false),
-    Questions(q: 'person can have 2 noses', r: true),
-  ];
   int track = 0;
 
   @override
@@ -35,7 +31,7 @@ class _MyAppState extends State<MyApp> {
                 height: (80.0),
               ),
               Text(
-                myQ[track].question,
+                quiz.Q[track].question,
                 textAlign: TextAlign.center,
                 style: const TextStyle(color: Colors.white),
               ),
@@ -45,7 +41,7 @@ class _MyAppState extends State<MyApp> {
               FlatButton(
                 onPressed: () {
                   setState(() {
-                    if (myQ[track].rank == true) {
+                    if (quiz.Q[track].rank == true) {
                       myList.add(
                         const Icon(
                           Icons.check,
@@ -73,7 +69,7 @@ class _MyAppState extends State<MyApp> {
               FlatButton(
                 onPressed: () {
                   setState(() {
-                    if (myQ[track].rank == false) {
+                    if (quiz.Q[track].rank == false) {
                       myList.add(
                         const Icon(
                           Icons.check,
