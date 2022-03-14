@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
                 style: const TextStyle(color: Colors.white),
               ),
               const SizedBox(
-                height: (60.0),
+                height: (45.0),
               ),
               FlatButton(
                 onPressed: () {
