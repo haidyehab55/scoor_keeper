@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'Quiz_brain.dart';
 
+Quiz_brain quiz = Quiz_brain();
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,7 +16,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  Quiz_brain quiz = Quiz_brain();
   List<Icon> myList = [];
   int track = 0;
 
