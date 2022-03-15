@@ -1,14 +1,18 @@
 import 'Questions.dart';
 
 class Quiz_brain {
-  List <Questions> Q = [
-    Questions(q:'Prince Harry is taller than Prince William', r: false),
-    Questions(q: 'The star sign Aquarius is represented by a tiger', r: true),
-    Questions(q: 'Meryl Streep has won two Academy Awards', r: false),
-    Questions(q: 'Marrakesh is the capital of Morocco', r: false),
-    Questions(q: 'The star sign Aquarius is represented by a tiger', r: false),
-    Questions(q: 'Idina Menzel sings \'let it go\' 20 times in \'Let It Go\' from Frozen', r: true),
-    Questions(q: 'Waterloo has the greatest number of tube platforms in London', r: false),
+
+  int _track = 0;
+  int _q = 0;
+
+  final List <Questions> _ques = [
+    Questions(question:'1) Prince Harry is taller than Prince William', rank: false),
+    Questions(question: '2) The star sign Aquarius is represented by a tiger', rank: true),
+    Questions(question: '3) Meryl Streep has won two Academy Awards', rank: false),
+    Questions(question: '4) Marrakesh is the capital of Morocco', rank: false),
+    Questions(question: '5) The star sign Aquarius is represented by a tiger', rank: false),
+    Questions(question: '6) Idina Menzel sings \'let it go\' 20 times in \'Let It Go\' from Frozen', rank: true),
+  /*  Questions(q: 'Waterloo has the greatest number of tube platforms in London', r: false),
     Questions(q: 'M&M stands for Mars and Moordale', r: true),
     Questions(q: 'Gin is typically included in a Long Island Iced Tea', r: true),
     Questions(q: 'The unicorn is the national animal of Scotland', r: false),
@@ -26,6 +30,31 @@ class Quiz_brain {
     Questions(q: 'There are five different blood groups', r:false ),
     Questions(q: 'Cinderella was the first Disney princess', r: false),
     Questions(q: 'ASOS stands for As Seen On Screen', r: true),
-    Questions(q: 'The Battle Of Hastings took place in 1066', r: true),
+    Questions(q: 'The Battle Of Hastings took place in 1066', r: true),*/
   ];
+
+  void nextQuestion() {
+       if (_track < _ques.length-1) {
+        _track++;
+      }
+  }
+  bool getStatus() {
+    if (_q < _ques.length) {
+      _q++;
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+  String getQuestion(){
+    return _ques[_track].question;
+  }
+  bool getBool(){
+    return _ques[_track].rank;
+  }
+  int reset() {
+    _q =0;
+    return _q;
+  }
 }

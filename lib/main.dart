@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Quiz_brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 Quiz_brain quiz = Quiz_brain();
 
@@ -15,9 +16,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   List<Icon> myList = [];
-  int track = 0;
+  int count = 0;
+
+  void showAlert() {
+    Alert(
+        context: context,
+        title: "RFLUTTER",
+        desc:
+        "You finished the quiz with score $count out of 6, AWESOME!.")
+        .show();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +41,7 @@ class _MyAppState extends State<MyApp> {
                 height: (80.0),
               ),
               Text(
-                quiz.Q[track].question,
+                quiz.getQuestion(),
                 textAlign: TextAlign.center,
                 style: const TextStyle(color: Colors.white),
               ),
@@ -42,23 +51,30 @@ class _MyAppState extends State<MyApp> {
               FlatButton(
                 onPressed: () {
                   setState(() {
-                    if (quiz.Q[track].rank == true) {
-                      myList.add(
-                        const Icon(
-                          Icons.check,
-                          color: Colors.green,
-                        ),
-                      );
-                    } else {
-                      myList.add(
-                        const Icon(
-                          Icons.close,
-                          color: Colors.red,
-                        ),
-                      );
+                    bool test = quiz.getStatus();
+                    if (test == true) {
+                      if (quiz.getBool() == true) {
+                        myList.add(
+                          const Icon(
+                            Icons.check,
+                            color: Colors.green,
+                          ),
+                        );
+                        count++;
+                      } else {
+                        myList.add(
+                          const Icon(
+                            Icons.close,
+                            color: Colors.red,
+                          ),
+                        );
+                      }
+                      quiz.nextQuestion();
+                    }
+                    else {
+                      showAlert();
                     }
                   });
-                  track++;
                 },
                 child: const Text(
                   'True',
@@ -70,23 +86,30 @@ class _MyAppState extends State<MyApp> {
               FlatButton(
                 onPressed: () {
                   setState(() {
-                    if (quiz.Q[track].rank == false) {
-                      myList.add(
-                        const Icon(
-                          Icons.check,
-                          color: Colors.green,
-                        ),
-                      );
-                    } else {
-                      myList.add(
-                        const Icon(
-                          Icons.close,
-                          color: Colors.red,
-                        ),
-                      );
+                    bool test = quiz.getStatus();
+                    if (test == true) {
+                      if (quiz.getBool() == false) {
+                        myList.add(
+                          const Icon(
+                            Icons.check,
+                            color: Colors.green,
+                          ),
+                        );
+                        count++;
+                      } else {
+                        myList.add(
+                          const Icon(
+                            Icons.close,
+                            color: Colors.red,
+                          ),
+                        );
+                      }
+                      quiz.nextQuestion();
+                    }
+                    else {
+                      showAlert();
                     }
                   });
-                  track++;
                 },
                 child: const Text(
                   'False',
