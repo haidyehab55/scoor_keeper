@@ -5,7 +5,7 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 Quiz_brain quiz = Quiz_brain();
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MaterialApp(home: MyApp(),));
 }
 
 class MyApp extends StatefulWidget {
@@ -24,14 +24,13 @@ class _MyAppState extends State<MyApp> {
         context: context,
         title: "RFLUTTER",
         desc:
-        "You finished the quiz with score $count out of 6, AWESOME!.")
+        "You finished the quiz with score $count out of 6, AWESOME!.",)
         .show();
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
@@ -124,7 +123,6 @@ class _MyAppState extends State<MyApp> {
             ],
           ),
         ),
-      ),
     );
   }
 }
